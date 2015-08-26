@@ -78,3 +78,4 @@ def print_weather(level_of_detail = target_timeframe):
 # hourly = d['hourly']
 # print 'Coming up: {0}'.format(hourly['summary'])
 
+print_weather()
