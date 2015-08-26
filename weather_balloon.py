@@ -10,28 +10,38 @@ apikey = os.environ['DARKSKY_API_KEY']
 # First, we make a parser with argparse:
 parser = argparse.ArgumentParser(description = 'Specify optional preferences.')
 # Next, we'll define what options we'd like to, um, define
-parser.add_argument('-location', '-l', help = 'specify a particular location')
+parser.add_argument('-location', '-l', help = 'Specify a particular location')
+parser.add_argument('-timeframe', '-t', help = 'What timeframe to print out',
+                    choices = ['currently', 'minutely', 'hourly', 'daily'])
 
 # Put all those arguments into something we can use!
 args = parser.parse_args()
 
-# Let's define several locations that we may care about
+# Let's define several locations that we may care about, but with
+# slightly blurred coordinates:
 locations = {'recursecenter': {'lat': '40.72078', 'lon': '-74.001119'},
              'portland_home': {'lat': '45.55902', 'lon': '-122.630664'},
              'parents':       {'lat': '47.29085', 'lon': '-122.40482'}}
 
-# If a location was specified with the location flag, set that
+# If a valid location was specified with the location flag, set that
 if args.location in locations:
     target_location = args.location
 # Otherwise, set a sensible default:
 else:
     target_location = 'recursecenter'
 
+# If a timeframe was specified, set that
+if args.timeframe:
+    target_timeframe = args.timeframe
+# Otherwise, let's just get the current weather:
+else:
+    target_timeframe = 'currently'
+
+
 # Make the location-specific URL!
 def make_url(location_key):
-    """ Takes a dictionary key naming a location; returns a URL for the
-    Dark Sky API call. Key is location name, value is lat/lon info as a
-    dictionary """
+    """ Takes a dictionary key (string) naming a location; returns a URL for the
+    Dark Sky API call. Key's value should be in the `locations` dict. """
     # base URL
     url = 'https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE'
     # ooh, gross long line. TODO: learn how to de-awful this
