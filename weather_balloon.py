@@ -70,12 +70,7 @@ def print_weather(level_of_detail = target_timeframe):
     else: # noooooooo
         print "Rats. Something went wrong."
 
-    print "In a nutshell, the {} weather is {}.".format(timeframe_word,
+    print u"In a nutshell, the {} weather is this: {}".format(timeframe_word,
            d[level_of_detail]['summary'])
-
-# minutely = d['minutely']
-# print 'Imminently: {0}'.format(minutely['summary'])
-# hourly = d['hourly']
-# print 'Coming up: {0}'.format(hourly['summary'])
 
 print_weather()
