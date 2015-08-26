@@ -53,15 +53,28 @@ def make_url(location_key):
 f = urllib.urlopen(make_url(target_location))
 # actually get the information out of the file-like object
 data = f.read()
-# turn this into a dictionary, by the power of JSON
+# turn this into a dictionary, by the power of JSON, because we'll need it
 d = json.loads(data)
 
-def print_weather():
-    """oh man I just want a function that takes something and returns weather
-    results like what I'm currently printing manually"""
+def print_weather(level_of_detail = target_timeframe):
+    """ Given whatever the desired level of detail is, put together something
+    kinda nice to describe the weather, then print it out. """
+    if level_of_detail == 'currently':
+        timeframe_word = 'current'
+    elif level_of_detail == 'minutely':
+        timeframe_word = "next hour's"
+    elif level_of_detail == 'hourly':
+        timeframe_word = "next couple days'"
+    elif level_of_detail == 'daily':
+        timeframe_word = "next week's"
+    else: # noooooooo
+        print "Rats. Something went wrong."
 
-minutely = d['minutely']
-print 'Imminently: {0}'.format(minutely['summary'])
-hourly = d['hourly']
-print 'Coming up: {0}'.format(hourly['summary'])
+    print "In a nutshell, the {} weather is {}.".format(timeframe_word,
+           d[level_of_detail]['summary'])
+
+# minutely = d['minutely']
+# print 'Imminently: {0}'.format(minutely['summary'])
+# hourly = d['hourly']
+# print 'Coming up: {0}'.format(hourly['summary'])
 
