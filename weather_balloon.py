@@ -64,10 +64,8 @@ def print_weather(level_of_detail = target_timeframe):
     kinda nice to describe the weather, then print it out. """
     if level_of_detail == 'currently':
         timeframe_word = 'current'
-    elif level_of_detail == 'minutely':
-        timeframe_word = "next hour's"
-    elif level_of_detail == 'hourly':
-        timeframe_word = "next couple days'"
+    elif level_of_detail == 'minutely' or level_of_detail == 'hourly':
+        timeframe_word = "upcoming"
     elif level_of_detail == 'daily':
         timeframe_word = "next week's"
     else: # noooooooo
