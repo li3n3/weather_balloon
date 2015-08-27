@@ -108,8 +108,12 @@ def print_weather(level_of_detail = target_timeframe):
         print "Rats. Something went wrong."
 
     # just the summary for the requested timeframe:
-    print u"In a nutshell, the {} weather {} is this: {}".format(timeframe_word,
-          locations[target_location]['longname'], d[level_of_detail]['summary'])
+    print u"In a nutshell, the {} weather {} is this: {}".format(
+            timeframe_word, locations[target_location]['longname'],
+            d[level_of_detail]['summary'])
+
+    print "You know how that makes me feel? Like this: {}".format(
+           find_weather_emoji(d[level_of_detail]['icon']))
 
 # and now we invoke it all!
 print_weather()
