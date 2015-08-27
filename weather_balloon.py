@@ -62,6 +62,39 @@ data = f.read()
 # turn this into a dictionary, by the power of JSON, because we'll need it
 d = json.loads(data)
 
+def find_weather_emoji(weather_icon):
+    """ Given the `icon` description, finds a suitable emoji to represent weather
+    conditions, and returns it. Currently accepted values (more may be defined in
+    the future): clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy,
+    partly-cloudy-day, partly-cloudy-night."""
+
+    if weather_icon == 'clear-day':
+        chosen_emoji = '🌞'
+    elif weather_icon == 'clear-night':
+        chosen_emoji = '🌠 🌃'
+    elif weather_icon == 'rain':
+        chosen_emoji = '☔️ 💦'
+    elif weather_icon == 'snow':
+        chosen_emoji = '❄️ ⛄️'
+    elif weather_icon == 'sleet':
+        chosen_emoji = '💧 ❄️'
+    elif weather_icon == 'wind':
+        chosen_emoji = '💨 🍃'
+    elif weather_icon == 'fog':
+        chosen_emoji = '🌁'
+    elif weather_icon == 'cloudy':
+        chosen_emoji = '☁️'
+    elif weather_icon == 'partly-cloudy-day':
+        chosen_emoji = '⛅️'
+    elif weather_icon == 'partly-cloudy-night':
+        chosen_emoji = '☁️ ⭐️ ☁️'
+    # Just in case the API returns something we don't know about
+    else:
+        chosen_emoji = '❔'
+
+    return chosen_emoji
+
+
 def print_weather(level_of_detail = target_timeframe):
     """ Given whatever the desired level of detail is, put together something
     kinda nice to describe the weather, then print it out. """
