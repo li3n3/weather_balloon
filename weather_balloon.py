@@ -74,13 +74,9 @@ def find_weather_emoji(weather_icon):
                    'snow': '❄️ ⛄️', 'sleet': '💧 ❄️', 'wind': '💨 🍃', 'fog': '🌁',
                    'cloudy': '☁️', 'partly-cloudy-day': '⛅️',
                    'partly-cloudy-night': '☁️ ⭐️ ☁️'}
-    if weather_icon in weatherdict:
-        chosen_emoji = weatherdict[weather_icon]
-    # Just in case the API returns something we don't know about
-    else:
-        chosen_emoji = '❔'
 
-    return chosen_emoji
+    # grab the emoji for that weather. Conditions not found? Return cool '?'
+    return weatherdict.get(weather_icon, '❔')
 
 
 def print_weather(level_of_detail = target_timeframe):
