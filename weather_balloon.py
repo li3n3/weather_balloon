@@ -68,26 +68,12 @@ def find_weather_emoji(weather_icon):
     the future): clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy,
     partly-cloudy-day, partly-cloudy-night."""
 
-    if weather_icon == 'clear-day':
-        chosen_emoji = '🌞'
-    elif weather_icon == 'clear-night':
-        chosen_emoji = '🌠 🌃'
-    elif weather_icon == 'rain':
-        chosen_emoji = '☔️ 💦'
-    elif weather_icon == 'snow':
-        chosen_emoji = '❄️ ⛄️'
-    elif weather_icon == 'sleet':
-        chosen_emoji = '💧 ❄️'
-    elif weather_icon == 'wind':
-        chosen_emoji = '💨 🍃'
-    elif weather_icon == 'fog':
-        chosen_emoji = '🌁'
-    elif weather_icon == 'cloudy':
-        chosen_emoji = '☁️'
-    elif weather_icon == 'partly-cloudy-day':
-        chosen_emoji = '⛅️'
-    elif weather_icon == 'partly-cloudy-night':
-        chosen_emoji = '☁️ ⭐️ ☁️'
+    weatherdict = {'clear-day': '🌞', 'clear-night': '🌠 🌃', 'rain': '☔️ 💦',
+                   'snow': '❄️ ⛄️', 'sleet': '💧 ❄️', 'wind': '💨 🍃', 'fog': '🌁',
+                   'cloudy': '☁️', 'partly-cloudy-day': '⛅️',
+                   'partly-cloudy-night': '☁️ ⭐️ ☁️'}
+    if weather_icon in weatherdict:
+        chosen_emoji = weatherdict[weather_icon]
     # Just in case the API returns something we don't know about
     else:
         chosen_emoji = '❔'
