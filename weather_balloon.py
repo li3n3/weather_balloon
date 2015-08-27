@@ -55,12 +55,14 @@ def make_url(location_key):
 
     return location_url
 
+
 # call make_url, get results, & put it in a file-like object
 f = urllib.urlopen(make_url(target_location))
 # actually get the information out of the file-like object
 data = f.read()
 # turn this into a dictionary, by the power of JSON, because we'll need it
 d = json.loads(data)
+
 
 def find_weather_emoji(weather_icon):
     """ Given the `icon` description, finds a suitable emoji to represent weather
@@ -100,6 +102,7 @@ def print_weather(level_of_detail = target_timeframe):
 
     print "You know how that makes me feel? Like this: {}".format(
            find_weather_emoji(d[level_of_detail]['icon']))
+
 
 # and now we invoke it all!
 print_weather()
