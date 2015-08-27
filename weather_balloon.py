@@ -18,10 +18,13 @@ parser.add_argument('--timeframe', '-t', help = 'What timeframe to print out',
 args = parser.parse_args()
 
 # Let's define several locations that we may care about, but with
-# slightly blurred coordinates:
-locations = {'recursecenter': {'lat': '40.72078', 'lon': '-74.001119'},
-             'portland_home': {'lat': '45.55902', 'lon': '-122.630664'},
-             'parents':       {'lat': '47.29085', 'lon': '-122.40482'}}
+# slightly blurred coordinates and a more human-friendly description:
+locations = {'recursecenter': {'lat': '40.72078', 'lon': '-74.001119',
+                               'longname': 'at the Recurse Center'},
+             'portland_home': {'lat': '45.55902', 'lon': '-122.630664',
+                               'longname': 'at home (in Portland)'},
+             'parents':       {'lat': '47.29085', 'lon': '-122.40482',
+                               'longname': "at your parents' house"}}
 
 # If a valid location was specified with the location flag, set that
 if args.location in locations:
@@ -71,8 +74,8 @@ def print_weather(level_of_detail = target_timeframe):
         print "Rats. Something went wrong."
 
     # just the summary for the requested timeframe:
-    print u"In a nutshell, the {} weather is this: {}".format(timeframe_word,
-           d[level_of_detail]['summary'])
+    print u"In a nutshell, the {} weather {} is this: {}".format(timeframe_word,
+          locations[target_location]['longname'], d[level_of_detail]['summary'])
 
 # and now we invoke it all!
 print_weather()
