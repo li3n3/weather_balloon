@@ -47,8 +47,9 @@ def make_url(location_key):
     Dark Sky API call. Key's value should be in the `locations` dict. """
     # base URL
     url = 'https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE'
-    # ooh, gross long line. TODO: learn how to de-awful this
-    location_url = url.replace('APIKEY', apikey).replace('LATITUDE', locations[location_key]['lat']).replace('LONGITUDE', locations[location_key]['lon'])
+    location_url = url.replace('APIKEY', apikey).\
+                   replace('LATITUDE', locations[location_key]['lat']).\
+                   replace('LONGITUDE', locations[location_key]['lon'])
 
     return location_url
 
