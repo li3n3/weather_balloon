@@ -10,8 +10,8 @@ apikey = os.environ['DARKSKY_API_KEY']
 # First, we make a parser with argparse:
 parser = argparse.ArgumentParser(description = 'Specify optional preferences.')
 # Next, we'll define what options we'd like to, um, define
-parser.add_argument('-location', '-l', help = 'Specify a particular location')
-parser.add_argument('-timeframe', '-t', help = 'What timeframe to print out',
+parser.add_argument('--location', '-l', help = 'Specify a particular location')
+parser.add_argument('--timeframe', '-t', help = 'What timeframe to print out',
                     choices = ['currently', 'minutely', 'hourly', 'daily'])
 
 # Put all those arguments into something we can use!
@@ -70,7 +70,9 @@ def print_weather(level_of_detail = target_timeframe):
     else: # noooooooo
         print "Rats. Something went wrong."
 
+    # just the summary for the requested timeframe:
     print u"In a nutshell, the {} weather is this: {}".format(timeframe_word,
            d[level_of_detail]['summary'])
 
+# and now we invoke it all!
 print_weather()
