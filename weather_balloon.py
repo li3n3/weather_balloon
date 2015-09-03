@@ -116,7 +116,7 @@ def print_weather(level_of_detail = target_timeframe):
     print "You know how that makes me feel? Like this: {}".format(
            find_weather_emoji(d[level_of_detail]['icon']))
 
-    if d['alerts']:
+    if 'alerts' in d:
         alerts_info(d['alerts'])
 
 
