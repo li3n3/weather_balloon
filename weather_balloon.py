@@ -79,6 +79,22 @@ def find_weather_emoji(weather_icon):
     # grab the emoji for that weather. Conditions not found? Return cool '?'
     return weatherdict.get(weather_icon, '❔')
 
+def alerts_info(alert_object):
+    """ Takes a Dark Sky alert object (a list of dicts, one for each alert), and
+    prints out the summary information with an option to display a much
+    longer description. More on alert objects:
+    https://developer.forecast.io/docs/v2#alerts """
+    # current alerts? print each (there might be more than one)
+    print "\nHey, potentially interesting news: there's at least one active " + \
+          "weather alert right now.", '\n' + \
+          "Info below!", '\n' + \
+          "🚫 🔥 🚫 🌊 🚫 💔 🚫 🚨 🚫 🚩 🚫 ♨️ 🚫 🙅🏻 🚫 😬 🚫 "
+    for alert in range(len(alert_object)):
+        # print the summary
+        print alert_object[alert]['title']
+        # TODO: ask the user if they'd like more information instead of just
+        # assuming
+        print alert_object[alert]['description']
 
 def print_weather(level_of_detail = target_timeframe):
     """ Given whatever the desired level of detail is, put together something
@@ -100,10 +116,8 @@ def print_weather(level_of_detail = target_timeframe):
     print "You know how that makes me feel? Like this: {}".format(
            find_weather_emoji(d[level_of_detail]['icon']))
 
-    # TODO: optionally print out alerts information if it exists. title and/or
-    # description are probably the most interesting bits. 'alerts' is a key in
-    # the main dictionary, containing a list of dictionaries for each
-    # individual alert
+    if d['alerts']:
+        alerts_info(d['alerts'])
 
 
 # and now we invoke it all!
