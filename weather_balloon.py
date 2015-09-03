@@ -84,17 +84,23 @@ def alerts_info(alert_object):
     prints out the summary information with an option to display a much
     longer description. More on alert objects:
     https://developer.forecast.io/docs/v2#alerts """
+    unreasonable_quantity_of_weather_danger = "🚫 🔥 🚫 🌊 🚫 💔 🚫 🚨 🚫 🚩 🚫 ♨️ 🚫 🙅🏻 🚫 😬 🚫 "
     # current alerts? print each (there might be more than one)
-    print "\nHey, potentially interesting news: there's at least one active " + \
+    print "Also, potentially interesting news: there's at least one active " + \
           "weather alert right now.", '\n' + \
-          "Info below!", '\n' + \
-          "🚫 🔥 🚫 🌊 🚫 💔 🚫 🚨 🚫 🚩 🚫 ♨️ 🚫 🙅🏻 🚫 😬 🚫 "
+          "Info below!"
     for alert in range(len(alert_object)):
+        print unreasonable_quantity_of_weather_danger
         # print the summary
         print alert_object[alert]['title']
-        # TODO: ask the user if they'd like more information instead of just
-        # assuming
-        print alert_object[alert]['description']
+        print '*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*'
+        # give the option for the long description
+        print "Would you like to know the gory details for this one? Type 'y' or 'n.'"
+        more_info = raw_input('> ')
+        if more_info == 'y':
+            print alert_object[alert]['description']
+        # otherwise, just carry on!
+
 
 def print_weather(level_of_detail = target_timeframe):
     """ Given whatever the desired level of detail is, put together something
@@ -116,6 +122,7 @@ def print_weather(level_of_detail = target_timeframe):
     print "You know how that makes me feel? Like this: {}".format(
            find_weather_emoji(d[level_of_detail]['icon']))
 
+    # call the alerts_info method if there's something there; otherwise, whatevs
     if 'alerts' in d:
         alerts_info(d['alerts'])
 
