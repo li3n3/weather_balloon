@@ -86,7 +86,7 @@ def alerts_info(alert_object):
     https://developer.forecast.io/docs/v2#alerts """
     unreasonable_quantity_of_weather_danger = "🚫 🔥 🚫 🌊 🚫 💔 🚫 🚨 🚫 🚩 🚫 ♨️ 🚫 🙅🏻 🚫 😬 🚫 "
     # current alerts? print each (there might be more than one)
-    print "Also, potentially interesting news: there's at least one active " + \
+    print "\nAlso, potentially interesting news: there's at least one active " + \
           "weather alert right now.", '\n' + \
           "Info below!"
     for alert in range(len(alert_object)):
