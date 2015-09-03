@@ -100,6 +100,11 @@ def print_weather(level_of_detail = target_timeframe):
     print "You know how that makes me feel? Like this: {}".format(
            find_weather_emoji(d[level_of_detail]['icon']))
 
+    # TODO: optionally print out alerts information if it exists. title and/or
+    # description are probably the most interesting bits. 'alerts' is a key in
+    # the main dictionary, containing a list of dictionaries for each
+    # individual alert
+
 
 # and now we invoke it all!
 print_weather()
