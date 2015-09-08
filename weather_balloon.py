@@ -27,7 +27,7 @@ locations = {'recursecenter': {'lat': '40.72078', 'lon': '-74.001119',
                                'longname': 'at home (in Portland)'},
              'parents':       {'lat': '47.29085', 'lon': '-122.40482',
                                'longname': "at your parents' house"}}
-# Also! What would happen if we could search for NEW locations?!
+# TODO: Also! What would happen if we could search for NEW locations?!
 
 # If a valid location was specified with the location flag, set that
 if args.location in locations:
