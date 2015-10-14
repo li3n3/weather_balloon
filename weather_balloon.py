@@ -23,8 +23,8 @@ args = parser.parse_args()
 # slightly blurred coordinates and a more human-friendly description:
 locations = {'recursecenter': {'lat': '40.72078', 'lon': '-74.001119',
                                'longname': 'at the Recurse Center'},
-             'portland_home': {'lat': '45.55902', 'lon': '-122.630664',
-                               'longname': 'at home (in Portland)'},
+             'home':          {'lat': '45.55902', 'lon': '-122.630664',
+                               'longname': 'at home'},
              'parents':       {'lat': '47.29085', 'lon': '-122.40482',
                                'longname': "at your parents' house"}}
 # TODO: Also! What would happen if we could search for NEW locations?!
@@ -34,7 +34,7 @@ if args.location in locations:
     target_location = args.location
 # Otherwise, set a sensible default:
 else:
-    target_location = 'recursecenter'
+    target_location = 'home'
 
 # If a timeframe was specified, set that
 if args.timeframe:
