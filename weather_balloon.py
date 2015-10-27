@@ -124,7 +124,7 @@ def weather_report(level_of_detail = target_timeframe):
         timeframe_word, locations[target_location]['longname'],
         d[level_of_detail]['summary']))
 
-    if args.verbose and level_of_detail is not 'daily':
+    if args.verbose and 'temperature' in d[level_of_detail]:
         the_report.append("The temperature is {} degrees Fahrenheit.".format(
             d[level_of_detail]['temperature']))
 
