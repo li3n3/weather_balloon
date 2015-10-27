@@ -17,6 +17,8 @@ parser.add_argument('--timeframe', '-t', help = 'What timeframe to print out',
                     choices = ['currently', 'minutely', 'hourly', 'daily'])
 parser.add_argument('--verbose', '-v', help = 'More detail about the given query',
                     action = 'store_true')
+parser.add_argument('--bike', '-b', help = 'Details relevant to bike commuting today',
+                    action = 'store_true')
 
 # Put all those arguments into something we can use!
 args = parser.parse_args()
@@ -119,17 +121,20 @@ def weather_report(level_of_detail = target_timeframe):
     else: # noooooooo
         print "Rats. Something went wrong."
 
-    # just the summary for the requested timeframe:
-    the_report.append(u"In a nutshell, the {} weather {} is this: {}".format(
-        timeframe_word, locations[target_location]['longname'],
-        d[level_of_detail]['summary']))
+    if args.bike:
+        pass
+    else:
+        # just the summary for the requested timeframe:
+        the_report.append(u"In a nutshell, the {} weather {} is this: {}".format(
+            timeframe_word, locations[target_location]['longname'],
+            d[level_of_detail]['summary']))
 
-    if args.verbose and 'temperature' in d[level_of_detail]:
-        the_report.append("The temperature is {} degrees Fahrenheit.".format(
-            d[level_of_detail]['temperature']))
+        if args.verbose and 'temperature' in d[level_of_detail]:
+            the_report.append("The temperature is {} degrees Fahrenheit.".format(
+                d[level_of_detail]['temperature']))
 
-    the_report.append("You know how that makes me feel? Like this: {}".format(
-        find_weather_emoji(d[level_of_detail]['icon'])))
+        the_report.append("You know how that makes me feel? Like this: {}".format(
+            find_weather_emoji(d[level_of_detail]['icon'])))
 
     for item in the_report:
         print item
