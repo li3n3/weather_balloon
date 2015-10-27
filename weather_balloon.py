@@ -120,11 +120,14 @@ def weather_report(level_of_detail = target_timeframe):
 
     # just the summary for the requested timeframe:
     the_report.append(u"In a nutshell, the {} weather {} is this: {}".format(
-            timeframe_word, locations[target_location]['longname'],
-            d[level_of_detail]['summary']))
+        timeframe_word, locations[target_location]['longname'],
+        d[level_of_detail]['summary']))
 
-    the_report.append( "You know how that makes me feel? Like this: {}".format(
-           find_weather_emoji(d[level_of_detail]['icon'])))
+    if args.verbose and level_of_detail is not 'daily':
+        the_report.append(d[level_of_detail]['temperature'])
+
+    the_report.append("You know how that makes me feel? Like this: {}".format(
+        find_weather_emoji(d[level_of_detail]['icon'])))
 
     for item in the_report:
         print item
