@@ -72,7 +72,7 @@ def find_weather_emoji(weather_icon):
     """ Given the `icon` description, finds a suitable emoji to represent weather
     conditions, and returns it. Currently accepted values (more may be defined in
     the future): clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy,
-    partly-cloudy-day, partly-cloudy-night."""
+    partly-cloudy-day, partly-cloudy-night. """
 
     weatherdict = {'clear-day': '🌞', 'clear-night': '🌠 🌃', 'rain': '☔️ 💦',
                    'snow': '❄️ ⛄️', 'sleet': '💧 ❄️', 'wind': '💨 🍃', 'fog': '🌁',
