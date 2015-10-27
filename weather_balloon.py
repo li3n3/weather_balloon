@@ -14,8 +14,8 @@ parser = argparse.ArgumentParser(description = 'Specify optional preferences.')
 # Next, we'll define what options we'd like to, um, define
 parser.add_argument('--location', '-l', help = 'Specify a particular location')
 parser.add_argument('--timeframe', '-t', help = 'What timeframe to print out',
-                    choices = ['currently', 'minutely', 'hourly', 'daily'],
-                    '--verbose', '-v', help = 'More detail about the given query')
+                    choices = ['currently', 'minutely', 'hourly', 'daily'])
+parser.add_argument('--verbose', '-v', help = 'More detail about the given query')
 
 # Put all those arguments into something we can use!
 args = parser.parse_args()
