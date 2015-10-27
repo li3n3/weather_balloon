@@ -125,7 +125,8 @@ def weather_report(level_of_detail = target_timeframe):
         d[level_of_detail]['summary']))
 
     if args.verbose and level_of_detail is not 'daily':
-        the_report.append(d[level_of_detail]['temperature'])
+        the_report.append("The temperature is {} degrees Fahrenheit.".format(
+            d[level_of_detail]['temperature']))
 
     the_report.append("You know how that makes me feel? Like this: {}".format(
         find_weather_emoji(d[level_of_detail]['icon'])))
