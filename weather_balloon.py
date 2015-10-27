@@ -14,7 +14,8 @@ parser = argparse.ArgumentParser(description = 'Specify optional preferences.')
 # Next, we'll define what options we'd like to, um, define
 parser.add_argument('--location', '-l', help = 'Specify a particular location')
 parser.add_argument('--timeframe', '-t', help = 'What timeframe to print out',
-                    choices = ['currently', 'minutely', 'hourly', 'daily'])
+                    choices = ['currently', 'minutely', 'hourly', 'daily'],
+                    '--verbose', '-v', help = 'More detail about the given query')
 
 # Put all those arguments into something we can use!
 args = parser.parse_args()
@@ -43,6 +44,7 @@ if args.timeframe:
 else:
     target_timeframe = 'currently'
 
+# TODO: Verbose option should do something. Define how that works.
 
 # Make the location-specific URL!
 def make_url(location_key):
