@@ -86,6 +86,7 @@ def alerts_info(alert_object):
     prints out the summary information with an option to display a much
     longer description. More on alert objects:
     https://developer.forecast.io/docs/v2#alerts """
+    # TODO: move print outside of the function
     unreasonable_quantity_of_weather_danger = "🚫 🔥 🚫 🌊 🚫 💔 🚫 🚨 🚫 🚩 🚫 ♨️ 🚫 🙅🏻 🚫 😬 🚫 "
     # current alerts? print each (there might be more than one)
     print "\nAlso, potentially interesting news: there's at least one active " + \
@@ -107,6 +108,7 @@ def alerts_info(alert_object):
 def weather_report(level_of_detail = target_timeframe):
     """ Given whatever the desired level of detail is, put together something
     kinda nice to describe the weather, then print it out. """
+    the_report = []
     if level_of_detail == 'currently':
         timeframe_word = 'current'
     elif level_of_detail == 'minutely' or level_of_detail == 'hourly':
@@ -117,14 +119,17 @@ def weather_report(level_of_detail = target_timeframe):
         print "Rats. Something went wrong."
 
     # just the summary for the requested timeframe:
-    print u"In a nutshell, the {} weather {} is this: {}".format(
+    the_report.append(u"In a nutshell, the {} weather {} is this: {}".format(
             timeframe_word, locations[target_location]['longname'],
-            d[level_of_detail]['summary'])
+            d[level_of_detail]['summary']))
 
-    print "You know how that makes me feel? Like this: {}".format(
-           find_weather_emoji(d[level_of_detail]['icon']))
+    the_report.append( "You know how that makes me feel? Like this: {}".format(
+           find_weather_emoji(d[level_of_detail]['icon'])))
 
-    # call the alerts_info method if there's something there; otherwise, whatevs
+    for item in the_report:
+        print item
+
+    # call the alerts_info function if there's something there; otherwise, whatevs
     if 'alerts' in d:
         alerts_info(d['alerts'])
 
