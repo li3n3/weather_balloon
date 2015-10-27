@@ -104,7 +104,7 @@ def alerts_info(alert_object):
         # otherwise, just carry on!
 
 
-def print_weather(level_of_detail = target_timeframe):
+def weather_report(level_of_detail = target_timeframe):
     """ Given whatever the desired level of detail is, put together something
     kinda nice to describe the weather, then print it out. """
     if level_of_detail == 'currently':
@@ -130,4 +130,4 @@ def print_weather(level_of_detail = target_timeframe):
 
 
 # and now we invoke it all!
-print_weather()
+weather_report()
