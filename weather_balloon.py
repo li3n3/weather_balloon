@@ -45,7 +45,7 @@ if args.timeframe:
 else:
     target_timeframe = 'currently'
 
-# TODO: Verbose option should do something. Define how that works.
+verbosity = args.verbose
 
 # Make the location-specific URL!
 def make_url(location_key):
@@ -124,7 +124,7 @@ def weather_report(level_of_detail = target_timeframe):
         timeframe_word, locations[target_location]['longname'],
         d[level_of_detail]['summary']))
 
-    if args.verbose and 'temperature' in d[level_of_detail]:
+    if verbosity and 'temperature' in d[level_of_detail]:
         the_report.append("The temperature is {} degrees Fahrenheit.".format(
             d[level_of_detail]['temperature']))
 
